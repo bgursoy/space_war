@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Wall.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 643.92, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 360.101 )
+
+[node name="Wall" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Horizontal" type="Area2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Horizontal"]
+position = Vector2( 639.802, -10.3926 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="CollisionShape2D" parent="Horizontal"]
+position = Vector2( 644.018, 730.491 )
+shape = SubResource( 1 )
+
+[node name="Vertical" type="Area2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Vertical"]
+position = Vector2( -10.3139, 360.953 )
+shape = SubResource( 2 )
+
+[node name="Right" type="CollisionShape2D" parent="Vertical"]
+position = Vector2( 1290.26, 360.229 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Horizontal" to="." method="_on_Horizontal_area_entered"]
+[connection signal="body_entered" from="Horizontal" to="." method="_on_Horizontal_body_entered"]
+[connection signal="area_entered" from="Vertical" to="." method="_on_Vertical_area_entered"]
+[connection signal="body_entered" from="Vertical" to="." method="_on_Vertical_body_entered"]
